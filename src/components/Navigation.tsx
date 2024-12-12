@@ -36,7 +36,7 @@ const Navigation = () => {
             <NavLink to="/" icon={Home}>Home</NavLink>
             <NavLink to="/about" icon={Info}>About</NavLink>
             <NavLink to="/donate" icon={Heart}>Give</NavLink>
-            <NavLink to="/#contact" icon={Mail}>Contact</NavLink>
+            <NavLink to="/contact" icon={Mail}>Contact</NavLink>
             <Link
               to="/donate"
               className="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition-colors flex items-center gap-2"
@@ -60,7 +60,7 @@ const Navigation = () => {
             <Link to="/" className="block px-3 py-2 text-gray-600 hover:text-green-600">Home</Link>
             <Link to="/about" className="block px-3 py-2 text-gray-600 hover:text-green-600">About</Link>
             <Link to="/donate" className="block px-3 py-2 text-gray-600 hover:text-green-600">Give</Link>
-            <Link to="/#contact" className="block px-3 py-2 text-gray-600 hover:text-green-600">Contact</Link>
+            <Link to="/contact" className="block px-3 py-2 text-gray-600 hover:text-green-600">Contact</Link>
             <Link
               to="/donate"
               className="block w-full text-center bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700"
