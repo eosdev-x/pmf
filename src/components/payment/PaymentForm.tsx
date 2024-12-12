@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { CreditCard, Wallet } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
 import PaymentStatus from './PaymentStatus';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
@@ -17,24 +18,37 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ amount, onSuccess, onError })
   const [status, setStatus] = useState<'idle' | 'processing' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
+  const generateVenmoUrl = () => {
+    const recipient = 'Panama-Mission';
+    const amountString = amount.toFixed(2);
+    const note = 'Donation';
+    return `venmo://paycharge?txn=pay&recipients=${recipient}&amount=${amountString}&note=${encodeURIComponent(note)}`;
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setProcessing(true);
     setStatus('processing');
 
     try {
-      const stripe = await stripePromise;
-      if (!stripe) throw new Error('Stripe failed to load');
+      if (paymentMethod === 'card') {
+        const stripe = await stripePromise;
+        if (!stripe) throw new Error('Stripe failed to load');
 
-      // Simulate payment processing
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // For demo purposes, randomly succeed or fail
-      if (Math.random() > 0.5) {
+        // Simulate payment processing
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        // For demo purposes, randomly succeed or fail
+        if (Math.random() > 0.5) {
+          setStatus('success');
+          onSuccess();
+        } else {
+          throw new Error('Payment failed. Please try again.');
+        }
+      } else {
+        // Handle Venmo payment
         setStatus('success');
         onSuccess();
-      } else {
-        throw new Error('Payment failed. Please try again.');
       }
     } catch (error) {
       setStatus('error');
@@ -114,30 +128,65 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ amount, onSuccess, onError })
             </div>
           </>
         ) : (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Venmo Username
-            </label>
-            <input
-              type="text"
-              placeholder="@username"
-              className="w-full px-3 py-2 border rounded-md"
-              disabled={processing}
-            />
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Venmo Recipient
+              </label>
+              <input
+                type="text"
+                value="@Panama-Mission"
+                className="w-full px-3 py-2 border rounded-md bg-gray-50"
+                disabled={true}
+                readOnly
+              />
+            </div>
+            <div className="flex flex-col items-center space-y-4">
+              <div className="bg-white p-4 rounded-lg shadow-md">
+                <QRCodeSVG
+                  value={generateVenmoUrl()}
+                  size={200}
+                  level="H"
+                  includeMargin={true}
+                  imageSettings={{
+                    src: "https://cdn1.venmo.com/marketing/images/branding/venmo-icon.svg",
+                    x: undefined,
+                    y: undefined,
+                    height: 40,
+                    width: 40,
+                    excavate: true,
+                  }}
+                />
+              </div>
+              <p className="text-sm text-gray-600 text-center">
+                Scan this QR code with your phone's camera to open Venmo and complete the payment
+              </p>
+              <a
+                href={generateVenmoUrl()}
+                className="text-[#008CFF] hover:text-[#0074D4] text-sm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Or click here to open Venmo
+              </a>
+            </div>
           </div>
         )}
 
-        <button
-          type="submit"
-          disabled={processing}
-          className={`w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition-colors ${
-            processing ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
-        >
-          {processing ? 'Processing...' : `Pay $${amount.toFixed(2)}`}
-        </button>
+        {paymentMethod === 'card' && (
+          <button
+            type="submit"
+            disabled={processing}
+            className={`w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition-colors ${
+              processing ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+          >
+            {processing ? 'Processing...' : `Pay $${amount.toFixed(2)}`}
+          </button>
+        )}
       </form>
     </div>
   );
 };
+
 export default PaymentForm;
