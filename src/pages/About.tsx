@@ -62,6 +62,32 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      <div className="py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="prose prose-lg mx-auto">
+            <h2 className="text-3xl font-bold mb-6">Training Leaders</h2>
+            <p className="text-gray-700 mb-6">
+              The Apostle Paul gave these instructions to Timothy: "And what you have heard from me in the presence of many witnesses entrust to faithful men, who will be able to teach others also" (2 Timothy 2:2). Paul's instructions to Timothy provide the model.
+            </p>
+            <p className="text-gray-700 mb-6">
+              We train faithful, reliable men to be spiritual leaders. The PMF Bible Institute is located in the district of Chimán and was founded in 2014. After 2.5 years of training, graduates receive a diploma in Pastoral Ministry and are equipped to preach the gospel of Christ, to plant new churches, to disciple believers, to shepherd the flock, and to train other faithful men to do the same.
+            </p>
+            <div className="bg-green-50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold mb-4">Biblical Foundation</h3>
+              <ul className="list-disc list-inside space-y-2 text-gray-700">
+                <li>2 Timothy 2:2</li>
+                <li>Matthew 28:19-20</li>
+                <li>Mark 16:15-16</li>
+                <li>Titus 1:5-9</li>
+                <li>1 Timothy 3:1-7</li>
+                <li>Acts 20:28</li>
+                <li>1 Peter 5:1-4</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
