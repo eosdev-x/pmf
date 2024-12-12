@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X, Heart, Mail, Home, Info, DollarSign } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import logoFull from '../assets/pmf-logo-full.svg';
+import logoFull from '/pmf-logo-full.svg';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
