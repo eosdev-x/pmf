@@ -37,7 +37,7 @@ const Footer = () => {
                 href="https://www.youtube.com/@vinnybp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-green-600 transition-colors"
+                className="text-gray-400 hover:text-red-600 transition-colors"
               >
                 <Youtube className="h-6 w-6" />
               </a>
