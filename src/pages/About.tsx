@@ -1,0 +1,69 @@
+import React from 'react';
+import { BookOpen, Users, Church, Heart, Scroll } from 'lucide-react';
+
+const MissionPoint = ({ icon: Icon, text }: { icon: any; text: string }) => (
+  <div className="flex items-center space-x-3 text-gray-700">
+    <Icon className="h-6 w-6 text-green-600" />
+    <span>{text}</span>
+  </div>
+);
+
+const About = () => {
+  return (
+    <div className="pt-16">
+      <div className="bg-green-50 py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <h1 className="text-4xl font-bold text-center mb-8">About Our Mission</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-2xl font-semibold mb-6">Our Core Mission</h2>
+              <div className="space-y-4">
+                <MissionPoint icon={BookOpen} text="Preach the Gospel" />
+                <MissionPoint icon={Users} text="Disciple believers" />
+                <MissionPoint icon={Church} text="Train leaders" />
+                <MissionPoint icon={Scroll} text="Send evangelists" />
+                <MissionPoint icon={Heart} text="Help the poor" />
+              </div>
+            </div>
+            <div>
+              <img
+                src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                alt="Mission work"
+                className="rounded-lg shadow-xl"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="prose prose-lg mx-auto">
+            <h2 className="text-3xl font-bold mb-6">Preaching the Gospel</h2>
+            <p className="text-gray-700 mb-6">
+              Our primary objective is to preach the Gospel of Jesus Christ to the lost. Our target area is rainforest villages in the Darién and Panama provinces. The Bible teaches that without faith in Jesus Christ, people remain separated from God by their own sins and they remain under judgement.
+            </p>
+            <p className="text-gray-700 mb-6">
+              Their only hope is Jesus. Through faith in Jesus, they can be saved. Jesus said, "I am the way, and the truth, and the life. No one comes to the Father except through me" (John 14:6). Peter proclaimed, "Salvation is found in no one else, for there is no other name under heaven given to mankind by which we must be saved" (Acts 4:12).
+            </p>
+            <div className="bg-green-50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold mb-4">Biblical Foundation</h3>
+              <ul className="list-disc list-inside space-y-2 text-gray-700">
+                <li>Matthew 28:18-20</li>
+                <li>John 3:16-17</li>
+                <li>Mark 16:15-16</li>
+                <li>Acts 2:38-42</li>
+                <li>Romans 3:21-26</li>
+                <li>Romans 6:23</li>
+                <li>Ephesians 2:1-10</li>
+                <li>2 Peter 3:9</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default About;
