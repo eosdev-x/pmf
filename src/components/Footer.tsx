@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Youtube } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Github } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = 2024;
@@ -21,7 +21,7 @@ const Footer = () => {
                 href="https://facebook.com/panamamission.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-green-600 transition-colors"
+                className="text-gray-400 hover:text-blue-600 transition-colors"
               >
                 <Facebook className="h-6 w-6" />
               </a>
@@ -40,6 +40,14 @@ const Footer = () => {
                 className="text-gray-400 hover:text-red-600 transition-colors"
               >
                 <Youtube className="h-6 w-6" />
+              </a>
+                            <a
+                href="https://github.com/eosdev-x/pmf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-purple-600 transition-colors"
+              >
+                <Github className="h-6 w-6" />
               </a>
             </div>
           </div>
