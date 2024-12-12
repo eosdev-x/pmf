@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X, Heart, Mail, Home, Info, DollarSign } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import logoFull from '../assets/pmf-logo-full.svg';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,11 @@ const Navigation = () => {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <img src="/src/assets/pmf-logo-full.svg" alt="PMF Logo" className="h-12 w-12" />
+              <img 
+                src={logoFull} 
+                alt="PMF Logo" 
+                className="h-12 w-12" 
+              />
               <span className="ml-3 text-xl font-bold text-gray-800">Panama Mission Foundation</span>
             </Link>
           </div>
