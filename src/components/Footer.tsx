@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Youtube } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = 2024;
@@ -34,12 +34,12 @@ const Footer = () => {
                 <Instagram className="h-6 w-6" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://www.youtube.com/@vinnybp"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-green-600 transition-colors"
               >
-                <Twitter className="h-6 w-6" />
+                <Youtube className="h-6 w-6" />
               </a>
             </div>
           </div>
