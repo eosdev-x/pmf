@@ -84,7 +84,10 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-center text-gray-500 text-sm">
-            © {currentYear} Panama Mission Foundation. All rights reserved.
+            {currentYear} Panama Mission Foundation. All rights reserved.
+          </p>
+          <p className="text-center text-gray-500 text-sm mt-2">
+            Panama Mission Foundation is a 501(c)(3) tax-exempt organization
           </p>
         </div>
       </div>
