@@ -26,7 +26,7 @@ const Navigation = () => {
               <img 
                 src={logoFull} 
                 alt="PMF Logo" 
-                className="h-14 w-14 md:h-16 md:w-16" 
+                className="h-20 w-20 object-contain" 
               />
               <span className="ml-3 text-xl font-bold text-gray-800">Panama Mission Foundation</span>
             </Link>
