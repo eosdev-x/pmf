@@ -26,7 +26,7 @@ const Footer = () => {
                 <Facebook className="h-6 w-6" />
               </a>
               <a
-                href="https://facebook.com/vince.payne.96"
+                href="https://www.instagram.com/vicente.pmf/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-green-600 transition-colors"
@@ -84,7 +84,6 @@ const Footer = () => {
             <ul className="space-y-3 text-gray-600">
               <li>Panama City, Panama</li>
               <li>vince@panamamission.org</li>
-              <li>+507 123 4567</li>
             </ul>
           </div>
         </div>

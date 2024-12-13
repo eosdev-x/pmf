@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Heart, Mail, Home, Info, DollarSign } from 'lucide-react';
+import { Menu, X, Heart, Mail, Home, Info, DollarSign, Newspaper } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import logoFull from '/pmf-logo-full.svg';
 
@@ -26,7 +26,7 @@ const Navigation = () => {
               <img 
                 src={logoFull} 
                 alt="PMF Logo" 
-                className="h-12 w-12" 
+                className="h-14 w-14 md:h-16 md:w-16" 
               />
               <span className="ml-3 text-xl font-bold text-gray-800">Panama Mission Foundation</span>
             </Link>
@@ -35,6 +35,7 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-8">
             <NavLink to="/" icon={Home}>Home</NavLink>
             <NavLink to="/about" icon={Info}>About</NavLink>
+            <NavLink to="/news" icon={Newspaper}>News</NavLink>
             <NavLink to="/donate" icon={Heart}>Give</NavLink>
             <NavLink to="/contact" icon={Mail}>Contact</NavLink>
             <Link
@@ -59,6 +60,7 @@ const Navigation = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link to="/" className="block px-3 py-2 text-gray-600 hover:text-green-600">Home</Link>
             <Link to="/about" className="block px-3 py-2 text-gray-600 hover:text-green-600">About</Link>
+            <Link to="/news" className="block px-3 py-2 text-gray-600 hover:text-green-600">News</Link>
             <Link to="/donate" className="block px-3 py-2 text-gray-600 hover:text-green-600">Give</Link>
             <Link to="/contact" className="block px-3 py-2 text-gray-600 hover:text-green-600">Contact</Link>
             <Link
