@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Panama Mission Foundation</h3>
             <p className="text-gray-600 mb-6">
-              Bringing hope and sustainable development to Panama's indigenous communities through faith,
+              Bringing hope and the word of God to Panama's indigenous communities through faith,
               education, and community support.
             </p>
             <div className="flex space-x-4">
