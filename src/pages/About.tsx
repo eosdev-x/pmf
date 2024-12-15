@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Users, Church, Heart, Scroll } from 'lucide-react';
+import { BookOpen, Users, Church, Heart, Scroll, Link } from 'lucide-react';
 
 const MissionPoint = ({ icon: Icon, text }: { icon: any; text: string }) => (
   <div className="flex items-center space-x-3 text-gray-700">
@@ -22,6 +22,7 @@ const About = () => {
                 <MissionPoint icon={Users} text="Disciple believers" />
                 <MissionPoint icon={Church} text="Train leaders" />
                 <MissionPoint icon={Scroll} text="Send evangelists" />
+                <MissionPoint icon={Link} text="Unite Christians" />
                 <MissionPoint icon={Heart} text="Help the poor" />
               </div>
             </div>
