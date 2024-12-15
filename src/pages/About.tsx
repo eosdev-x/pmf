@@ -28,7 +28,7 @@ const About = () => {
             </div>
             <div>
               <img
-                src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                src="https://1drv.ms/i/c/6cb795a80d223b6a/IQQo3BIXVkcoRqO93HYlHv_xAdfjgH-8QdoF3K_kS6ROefs?width=660"
                 alt="Mission work"
                 className="rounded-lg shadow-xl"
               />
