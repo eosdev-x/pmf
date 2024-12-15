@@ -1,5 +1,6 @@
 import React from 'react';
 import { BookOpen, Users, Church, Heart, Scroll, Link } from 'lucide-react';
+import futureLeaders from '../assets/future-leaders.jpg';
 
 const MissionPoint = ({ icon: Icon, text }: { icon: any; text: string }) => (
   <div className="flex items-center space-x-3 text-gray-700">
@@ -28,7 +29,7 @@ const About = () => {
             </div>
             <div>
               <img
-                src="src/assets/future-leaders.jpg"
+                src={futureLeaders}
                 alt="Mission work"
                 className="rounded-lg shadow-xl"
               />
