@@ -48,10 +48,6 @@ const Contact = () => {
               <span>vince@panamamission.org</span>
             </div>
             <div className="flex items-center space-x-4">
-              <Phone className="h-6 w-6 text-green-600" />
-              <span>+507 123 4567</span>
-            </div>
-            <div className="flex items-center space-x-4">
               <MapPin className="h-6 w-6 text-green-600" />
               <span>Panama City, Panama</span>
             </div>
