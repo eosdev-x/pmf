@@ -1,6 +1,5 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import heroImage from '../assets/hero-image.jpg';
 
 const Hero = () => {
@@ -22,12 +21,6 @@ const Hero = () => {
         <p className="text-xl md:text-2xl text-center max-w-2xl mb-8 animate-fade-in-delay">
           Join us in our mission to serve and support communities in Panama's rainforest villages
         </p>
-        <Link 
-          to="/donate" 
-          className="bg-green-600 text-white px-8 py-3 rounded-full text-lg hover:bg-green-700 transition-colors animate-fade-in-delay-2"
-        >
-          Support Our Mission
-        </Link>
         
         <div className="absolute bottom-8 animate-bounce">
           <ChevronDown className="h-8 w-8" />
