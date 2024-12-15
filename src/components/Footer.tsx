@@ -96,6 +96,16 @@ const Footer = () => {
           <p className="text-center text-gray-500 text-sm mt-2">
             Panama Mission Foundation is a 501(c)(3) tax-exempt organization
           </p>
+          <p className="text-center text-gray-500 text-sm mt-2">Site by:{' '}  
+              <a
+                href="https://eosdev.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-600 hover:underline"
+              >
+                eosdev
+              </a>
+            </p>
         </div>
       </div>
     </footer>

@@ -25,37 +25,46 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ amount, onSuccess, onError })
     return `venmo://paycharge?txn=pay&recipients=${recipient}&amount=${amountString}&note=${encodeURIComponent(note)}`;
   };
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    setProcessing(true);
-    setStatus('processing');
-
+  const handleStripeCheckout = async () => {
     try {
-      if (paymentMethod === 'card') {
-        const stripe = await stripePromise;
-        if (!stripe) throw new Error('Stripe failed to load');
+      setProcessing(true);
+      setStatus('processing');
 
-        // Simulate payment processing
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        
-        // For demo purposes, randomly succeed or fail
-        if (Math.random() > 0.5) {
-          setStatus('success');
-          onSuccess();
-        } else {
-          throw new Error('Payment failed. Please try again.');
-        }
-      } else {
-        // Handle Venmo payment
-        setStatus('success');
-        onSuccess();
+      const response = await fetch('http://localhost:3001/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ amount }),
+        credentials: 'include'
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to create checkout session');
       }
+
+      const { url } = await response.json();
+      window.location.href = url;
     } catch (error) {
       setStatus('error');
-      setErrorMessage(error instanceof Error ? error.message : 'Payment failed');
-      onError(error instanceof Error ? error.message : 'Payment failed');
+      const errorMessage = error instanceof Error ? error.message : 'Payment failed';
+      setErrorMessage(errorMessage);
+      onError(errorMessage);
     } finally {
       setProcessing(false);
+    }
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (paymentMethod === 'card') {
+      await handleStripeCheckout();
+    } else {
+      // Handle Venmo payment
+      setStatus('success');
+      onSuccess();
     }
   };
 
@@ -90,43 +99,13 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ amount, onSuccess, onError })
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {paymentMethod === 'card' ? (
-          <>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Card Number
-              </label>
-              <input
-                type="text"
-                placeholder="4242 4242 4242 4242"
-                className="w-full px-3 py-2 border rounded-md"
-                disabled={processing}
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Expiry Date
-                </label>
-                <input
-                  type="text"
-                  placeholder="MM/YY"
-                  className="w-full px-3 py-2 border rounded-md"
-                  disabled={processing}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  CVC
-                </label>
-                <input
-                  type="text"
-                  placeholder="123"
-                  className="w-full px-3 py-2 border rounded-md"
-                  disabled={processing}
-                />
-              </div>
-            </div>
-          </>
+          <button
+            type="submit"
+            disabled={processing}
+            className="w-full bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition-colors disabled:opacity-50"
+          >
+            {processing ? 'Processing...' : 'Proceed to Payment'}
+          </button>
         ) : (
           <div className="space-y-4">
             <div>
@@ -158,31 +137,14 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ amount, onSuccess, onError })
                   }}
                 />
               </div>
-              <p className="text-sm text-gray-600 text-center">
-                Scan this QR code with your phone's camera to open Venmo and complete the payment
-              </p>
-              <a
-                href={generateVenmoUrl()}
-                className="text-[#008CFF] hover:text-[#0074D4] text-sm"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="submit"
+                className="w-full bg-[#3D95CE] text-white px-6 py-3 rounded-md hover:bg-[#3D95CE]/90 transition-colors"
               >
-                Or click here to open Venmo
-              </a>
+                Open in Venmo App
+              </button>
             </div>
           </div>
-        )}
-
-        {paymentMethod === 'card' && (
-          <button
-            type="submit"
-            disabled={processing}
-            className={`w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition-colors ${
-              processing ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-          >
-            {processing ? 'Processing...' : `Pay $${amount.toFixed(2)}`}
-          </button>
         )}
       </form>
     </div>
